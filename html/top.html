@@ -9,11 +9,11 @@
 <h2>Největší dlužníci</h2>
 <table>
 <thead>
-<tr><th>Ministr</th><th>Bilance</th></tr>
+<tr><th>Ministr</th><th>Strana</th><th>Bilance</th></tr>
 </thead>
 <tbody>
 {% for ministr in top %}
-<tr><td>{{ ministr.jmeno }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
+<tr><td>{{ ministr.jmeno }}</td><td>{{ ministr.strana }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
 {% endfor %}
 </tbody>
 </table>

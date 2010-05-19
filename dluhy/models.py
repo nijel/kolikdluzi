@@ -1,9 +1,18 @@
 from django.db import models
 
+class Strana(models.Model):
+    jmeno = models.CharField(max_length = 100)
+    slug = models.SlugField(unique = True)
+    url = models.URLField(null = True, blank = True)
+
+    def __unicode__(self):
+        return self.jmeno
+
 class Ministr(models.Model):
     jmeno = models.CharField(max_length = 100)
     slug = models.SlugField(unique = True)
     url = models.URLField(null = True, blank = True)
+    strana = models.ForeignKey(Strana, null = True, blank = True)
 
     def __unicode__(self):
         return self.jmeno
