@@ -22,3 +22,9 @@ class Rozpocet(models.Model):
 class Vlada(models.Model):
     ministr = models.ForeignKey(Ministr)
     rozpocet = models.ForeignKey(Rozpocet)
+
+    def __unicode__(self):
+        return '%s (%d)' % (self.ministr.jmeno, self.rozpocet.rok)
+
+    class Meta:
+        unique_together = (('ministr', 'rozpocet'),)
