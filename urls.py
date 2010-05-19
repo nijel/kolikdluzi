@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     (r'^info/$', 'dluhy.views.info'),
     (r'^chart.js$', 'dluhy.views.chart'),
     (r'^ministri/(?P<slug>[^/]+)/$', 'dluhy.views.ministr'),
-    (r'^strana/(?P<slug>[^/]+)/$', 'dluhy.views.strana'),
 
     # Example:
     # (r'^kolikdluzi/', include('kolikdluzi.foo.urls')),

@@ -6,9 +6,8 @@ class Strana(models.Model):
     slug = models.SlugField(unique = True)
     url = models.URLField(null = True, blank = True)
 
-    @models.permalink
     def get_absolute_url(self):
-         return ('dluhy.views.strana', (), {'slug': self.slug})
+        return self.url
 
     def get_link(self):
         return mark_safe('<a href="%s">%s</a>' % (self.get_absolute_url(), self.__unicode__()))
