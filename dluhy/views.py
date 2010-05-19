@@ -13,6 +13,12 @@ def index(request):
         'top': top,
     }))
 
+def top(request):
+    top = Ministr.objects.annotate(bilance = Sum('vlada__rozpocet__bilance')).order_by('bilance')
+    return render_to_response('top.html', RequestContext(request, {
+        'top': top,
+    }))
+
 def info(request):
     return render_to_response('info.html', RequestContext(request, {
     }))

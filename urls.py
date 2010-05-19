@@ -5,6 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', 'dluhy.views.index'),
+    (r'^top/$', 'dluhy.views.top'),
     (r'^info/$', 'dluhy.views.info'),
     (r'^chart.js$', 'dluhy.views.chart'),
 

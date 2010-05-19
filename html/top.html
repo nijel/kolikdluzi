@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}Největší dlužníci{% endblock %}
+
+{% block content %}
+
+<h2>Největší dlužníci</h2>
+<table>
+<thead>
+<tr><th>Ministr</th><th>Bilance</th></tr>
+</thead>
+<tbody>
+{% for ministr in top %}
+<tr><td>{{ ministr.jmeno }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}
+
+
