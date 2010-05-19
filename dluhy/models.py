@@ -12,12 +12,14 @@ class Rozpocet(models.Model):
     rok = models.IntegerField(primary_key = True, db_index = True)
     prijmy = models.IntegerField()
     vydaje = models.IntegerField()
+    bilance = models.IntegerField()
 
     def __unicode__(self):
-        return '%d (%d)' % (self.rok, self.bilance())
+        return '%d (%d)' % (self.rok, self.bilance)
 
-    def bilance(self):
-        return self.prijmy - self.vydaje
+    def save(self, *args, **kwargs):
+        self.bilance = self.prijmy - self.vydaje
+        super(Rozpocet, self).save(*args, **kwargs)
 
 class Vlada(models.Model):
     ministr = models.ForeignKey(Ministr)
