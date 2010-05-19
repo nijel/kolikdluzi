@@ -5,9 +5,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', 'dluhy.views.index'),
-    (r'^top/$', 'dluhy.views.top'),
+    (r'^ministri/$', 'dluhy.views.ministri'),
     (r'^info/$', 'dluhy.views.info'),
     (r'^chart.js$', 'dluhy.views.chart'),
+    (r'^ministri/(?P<slug>[^/]+)/$', 'dluhy.views.ministr'),
+    (r'^strana/(?P<slug>[^/]+)/$', 'dluhy.views.strana'),
 
     # Example:
     # (r'^kolikdluzi/', include('kolikdluzi.foo.urls')),

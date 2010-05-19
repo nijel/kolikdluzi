@@ -13,7 +13,7 @@ def index(request):
         'top': top,
     }))
 
-def top(request):
+def ministri(request):
     top = Ministr.objects.annotate(bilance = Sum('vlada__rozpocet__bilance')).order_by('bilance')
     return render_to_response('top.html', RequestContext(request, {
         'top': top,
@@ -21,6 +21,18 @@ def top(request):
 
 def info(request):
     return render_to_response('info.html', RequestContext(request, {
+    }))
+
+def strana(request, slug):
+    strana = get_object_or_404(Strana, slug = slug)
+    return render_to_response('strana.html', RequestContext(request, {
+        'strana': strana,
+    }))
+
+def ministr(request, slug):
+    ministr = get_object_or_404(Ministr, slug = slug)
+    return render_to_response('ministr.html', RequestContext(request, {
+        'ministr': ministr,
     }))
 
 def chart(request):

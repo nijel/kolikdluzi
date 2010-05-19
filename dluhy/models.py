@@ -1,9 +1,17 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 class Strana(models.Model):
     jmeno = models.CharField(max_length = 100)
     slug = models.SlugField(unique = True)
     url = models.URLField(null = True, blank = True)
+
+    @models.permalink
+    def get_absolute_url(self):
+         return ('dluhy.views.strana', (), {'slug': self.slug})
+
+    def get_link(self):
+        return mark_safe('<a href="%s">%s</a>' % (self.get_absolute_url(), self.__unicode__()))
 
     def __unicode__(self):
         return self.jmeno
@@ -13,6 +21,13 @@ class Ministr(models.Model):
     slug = models.SlugField(unique = True)
     url = models.URLField(null = True, blank = True)
     strana = models.ForeignKey(Strana, null = True, blank = True)
+
+    @models.permalink
+    def get_absolute_url(self):
+         return ('dluhy.views.ministr', (), {'slug': self.slug})
+
+    def get_link(self):
+        return mark_safe('<a href="%s">%s</a>' % (self.get_absolute_url(), self.__unicode__()))
 
     def __unicode__(self):
         return self.jmeno

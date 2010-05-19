@@ -13,7 +13,7 @@
 </thead>
 <tbody>
 {% for ministr in top %}
-<tr><td>{{ ministr.jmeno }}</td><td>{{ ministr.strana }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
+<tr><td>{{ ministr.get_link }}</td><td>{{ ministr.strana }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
 {% endfor %}
 </tbody>
 </table>

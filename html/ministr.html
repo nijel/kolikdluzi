@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}Kolik dluží {{ ministr.jmeno }}?{% endblock %}
+
+{% block content %}
+
+<h2>Kolik dluží {{ ministr.jmeno }}?</h2>
+
+{% if ministr.strana %}
+<p>Stranická příslušnost: {{ ministr.strana.get_link }}</p>
+{% endif %}
+
+<p>{{ ministr.jmeno }} se podílel na následujících rozpočtech:</p>
+
+<table>
+<thead>
+<tr><th>Rok</th><th>Příjmy</th><th>Výdaje</th><th>Bilance</th></tr>
+</thead>
+<tbody>
+{% for vlada in ministr.vlada_set.all %}
+<tr><td>{{ vlada.rozpocet.rok }}</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}
+
+
+
