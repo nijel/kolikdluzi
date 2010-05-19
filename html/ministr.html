@@ -20,9 +20,12 @@
 </thead>
 <tbody>
 {% for vlada in ministr.vlada_set.all %}
-<tr><td>{{ vlada.rozpocet.rok }}</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td></tr>
+<tr><td>{{ vlada.rozpocet.rok }}</td><td>{{ vlada.rozpocet.prijmy }} mil. Kč</td><td>{{ vlada.rozpocet.vydaje }} mil. Kč</td><td>{{ vlada.rozpocet.bilance }} mil. Kč</td></tr>
 {% endfor %}
 </tbody>
+<tfoot>
+<tr><td>Celkem</td><td>{{ summary.prijmy }} mil. Kč</td><td>{{ summary.vydaje }} mil. Kč</td><td>{{ summary.bilance }} mil. Kč</td></tr>
+</tfoot>
 </table>
 
 {% endblock %}

@@ -31,8 +31,13 @@ def strana(request, slug):
 
 def ministr(request, slug):
     ministr = get_object_or_404(Ministr, slug = slug)
+    summary = ministr.vlada_set.aggregate(
+        bilance = Sum('rozpocet__bilance'),
+        vydaje = Sum('rozpocet__vydaje'),
+        prijmy = Sum('rozpocet__prijmy'))
     return render_to_response('ministr.html', RequestContext(request, {
         'ministr': ministr,
+        'summary': summary,
     }))
 
 def chart(request):
