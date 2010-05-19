@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<!--! This is main page template used for all other pages. -->
+ <head profile="http://purl.org/uF/2008/03/ http://purl.org/uF/hAtom/0.1/">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Michal Čihař" />
+  <meta name="copyright" content="Copyright &copy; 2010 Michal Čihař" />
+  <meta name="google-site-verification" content="HFOfLE1lvi1jgH12XWhZU372Nb5qzgkIIxdC8GnveUI" />
+  <link rel="copyright" href="/license/" />
+  <title>{% block title %}Kolik dluží?{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="/media/css/style.css" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="robots" content="index, follow" />
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  {% block header %}{% endblock %}
+ </head>
+ <body>
+  <div id="header">
+   <h1>Kolik dluží?</h1>
+   <div class="clearer"></div>
+  </div>
+
+  <div id="body">
+  {% block content %}{% endblock %}
+  </div>
+<div class="sidebar">
+
+<h3>Reklama</h3>
+<p>
+</p>
+  {% block sidebar %}{% endblock %}
+</div>
+
+
+<div class="wide">
+<div class="footnavi">
+    <div class="col">
+    <h6><a href="/top">Dlužníci</a></h6>
+    </div>
+    <div class="col">
+    <h6><a href="/info">O stránkách</a></h6>
+    </div>
+</div>
+</div>
+
+  <ul id="footer">
+    <li>Copyright &copy; 2010 <span class="vcard"><a class="url fn" href="http://cihar.com/">Michal Čihař</a><a href="mailto:michal@cihar.com" class="email"></a></span></li>
+    <li class="last">Validní <a href="http://validator.w3.org/check/referer">HTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></li>
+  </ul>
+<!-- Piwik -->
+<script type="text/javascript">
+//<![CDATA[
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.cihar.com/" : "http://stats.cihar.com/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 5);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+} catch( err ) {}
+//]]>
+</script>
+<!-- End Piwik Tag -->
+ </body>
+</html>
+
+

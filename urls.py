@@ -4,6 +4,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^$', 'dluhy.views.index'),
+    (r'^chart.js$', 'dluhy.views.chart'),
+
     # Example:
     # (r'^kolikdluzi/', include('kolikdluzi.foo.urls')),
 

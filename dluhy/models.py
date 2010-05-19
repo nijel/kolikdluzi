@@ -14,7 +14,10 @@ class Rozpocet(models.Model):
     vydaje = models.IntegerField()
 
     def __unicode__(self):
-        return '%d (%d)' % (self.rok, self.prijmy - self.vydaje)
+        return '%d (%d)' % (self.rok, self.bilance())
+
+    def bilance(self):
+        return self.prijmy - self.vydaje
 
 class Vlada(models.Model):
     ministr = models.ForeignKey(Ministr)
