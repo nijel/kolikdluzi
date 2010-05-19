@@ -10,6 +10,10 @@ def index(request):
     return render_to_response('index.html', RequestContext(request, {
     }))
 
+def info(request):
+    return render_to_response('info.html', RequestContext(request, {
+    }))
+
 def chart(request):
     return render_to_response('chart.js', RequestContext(request, {
         'rozpocty': Rozpocet.objects.all()
