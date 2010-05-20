@@ -9,7 +9,7 @@
 <h2>Kolik dluží {{ ministr.jmeno }}?</h2>
 
 {% if ministr.strana %}
-<p>Stranická příslušnost: {{ ministr.strana.get_link }}<span class="note">(<a href="/info/#strany">pozn.</a>)</span></p>
+<p>Stranická příslušnost: {{ ministr.strana.get_link }}<sup class="note"><a href="/info/#strany">pozn.</a></sup></p>
 {% endif %}
 
 <p>{{ ministr.jmeno }} se podílel na následujících rozpočtech:</p>
