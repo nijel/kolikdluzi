@@ -8,14 +8,14 @@ class Strana(models.Model):
     url = models.URLField(null = True, blank = True)
 
     def get_absolute_url(self):
-        if self.url is not None:
+        if self.url is not None and self.url != '':
             return self.url
         else:
             return self.wikipedia
 
     def get_link(self):
         url = self.get_absolute_url()
-        if url is None:
+        if url is None and url != '':
             return self.__unicode__()
         else:
             return mark_safe('<a href="%s">%s</a>' % (url, self.__unicode__()))
