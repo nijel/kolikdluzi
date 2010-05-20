@@ -296,3 +296,13 @@ span.size {
 td.bil {
     text-align: right;
 }
+table {
+    border-collapse: collapse;
+}
+table td, table th {
+    padding: 0.5em;
+    margin: 0;
+}
+table tfoot td {
+    border-top: 1px solid black;
+}
