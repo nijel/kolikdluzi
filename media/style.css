@@ -114,3 +114,7 @@ table td, table th {
 table tfoot td {
     border-top: 1px solid black;
 }
+div.sidebar ul {
+    margin: 0;
+}
+
