@@ -28,8 +28,12 @@
 </tfoot>
 </table>
 
+{% if ministr.wikipedia %}
+<p>Podívejte se také na Wikipedii na článek <a href="{{ ministr.wikipedia }}">{{ ministr.jmeno }}</a>.</p>
+{% endif %}
+
 {% if ministr.url %}
-<p>Podívejte se také na Wikipedii na článek <a href="{{ ministr.url }}">{{ ministr.jmeno }}</a>.</p>
+<p>Podívejte se také na <a href="{{ ministr.url }}">osobní stránky</a>.</p>
 {% endif %}
 
 {% endblock %}
