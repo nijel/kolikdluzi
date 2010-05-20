@@ -8,10 +8,17 @@ class Strana(models.Model):
     url = models.URLField(null = True, blank = True)
 
     def get_absolute_url(self):
-        return self.url
+        if self.url is not None:
+            return self.url
+        else:
+            return self.wikipedia
 
     def get_link(self):
-        return mark_safe('<a href="%s">%s</a>' % (self.get_absolute_url(), self.__unicode__()))
+        url = self.get_absolute_url()
+        if url is None:
+            return self.__unicode__()
+        else:
+            return mark_safe('<a href="%s">%s</a>' % (url, self.__unicode__()))
 
     def __unicode__(self):
         return self.jmeno
