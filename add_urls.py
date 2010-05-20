@@ -15,10 +15,10 @@ from django.template.defaultfilters import slugify
 
 from dluhy.models import Vlada, Rozpocet, Ministr, Strana
 
-for m in Ministr.objects.filter(strana = None): #all():
+for m in Ministr.objects.filter(wikipedia = ''): #all():
     print m.jmeno
     webbrowser.open(m.wikipedia)
-    if m.wikipedia is None:
+    if m.wikipedia is None or m.wikipedia == '':
         u = 'http://cs.wikipedia.org/wiki/%s' % (urllib.quote(m.jmeno.replace(' ', '_').encode('utf-8')))
         webbrowser.open(u)
         s = raw_input('Wikipedia: ')
@@ -26,7 +26,7 @@ for m in Ministr.objects.filter(strana = None): #all():
             m.wikipedia = u
         elif s != 'x':
             m.wikipedia = s
-    if m.url is None:
+    if m.url is None or m.url == '':
         s = raw_input('URL: ')
         if s != '':
             m.url = s
