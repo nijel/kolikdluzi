@@ -14,14 +14,14 @@
 <thead>
 <tr><th>Rok</th><th>Příjmy</th><th>Výdaje</th><th>Bilance</th></tr>
 </thead>
+<tfoot>
+<tr><td>Celkem</td><td class="bil">{{ summary.prijmy }} mil. Kč</td><td class="bil">{{ summary.vydaje }} mil. Kč</td><td class="bil">{{ summary.bilance }} mil. Kč</td></tr>
+</tfoot>
 <tbody>
 {% for vlada in ministr.vlada_set.all %}
 <tr><td>{{ vlada.rozpocet.rok }}</td><td class="bil">{{ vlada.rozpocet.prijmy }} mil. Kč</td><td class="bil">{{ vlada.rozpocet.vydaje }} mil. Kč</td><td class="bil">{{ vlada.rozpocet.bilance }} mil. Kč</td></tr>
 {% endfor %}
 </tbody>
-<tfoot>
-<tr><td>Celkem</td><td class="bil">{{ summary.prijmy }} mil. Kč</td><td class="bil">{{ summary.vydaje }} mil. Kč</td><td class="bil">{{ summary.bilance }} mil. Kč</td></tr>
-</tfoot>
 </table>
 
 <h3>Další informace</h3>
