@@ -20,7 +20,7 @@
  {"pk": 11, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Vil%C3%A9m_Hol%C3%A1%C5%88", "strana": 4, "jmeno": "Vil\u00e9m Hol\u00e1\u0148", "slug": "vilem-holan"}},
  {"pk": 12, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Jind%C5%99ich_Kab%C3%A1t", "strana": 4, "jmeno": "Jind\u0159ich Kab\u00e1t", "slug": "jindrich-kabat"}},
  {"pk": 13, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Petr_Lom", "strana": 2, "jmeno": "Petr Lom", "slug": "petr-lom"}},
- {"pk": 14, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Igor_N%C4%9Bmec", "strana": null, "jmeno": "Igor N\u011bmec", "slug": "igor-nemec"}},
+ {"pk": 14, "model": "dluhy.ministr", "fields": {"url": "", "wikipedia": "http://cs.wikipedia.org/wiki/Igor_N%C4%9Bmec_%28politik%29", "strana": 2, "jmeno": "Igor N\u011bmec", "slug": "igor-nemec"}},
  {"pk": 15, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Ji%C5%99%C3%AD_Nov%C3%A1k_(politik)", "strana": 6, "jmeno": "Ji\u0159\u00ed Nov\u00e1k", "slug": "jiri-novak"}},
  {"pk": 16, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Ivan_Pilip", "strana": 6, "jmeno": "Ivan Pilip", "slug": "ivan-pilip"}},
  {"pk": 17, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Petr_Pi%C5%A5ha", "strana": 2, "jmeno": "Petr Pi\u0165ha", "slug": "petr-pitha"}},
