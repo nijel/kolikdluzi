@@ -292,3 +292,7 @@ ul.featuresearch li {
 span.size {
     white-space: nowrap;
 }
+
+td.bil {
+    text-align: right;
+}
