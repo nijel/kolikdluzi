@@ -8,10 +8,6 @@
 
 <h2>Kolik dluží {{ ministr.jmeno }}?</h2>
 
-{% if ministr.strana %}
-<p>Stranická příslušnost: {{ ministr.strana.get_link }}<sup class="note"><a href="/info/#strany">pozn.</a></sup></p>
-{% endif %}
-
 <p>{{ ministr.jmeno }} se podílel na následujících rozpočtech:</p>
 
 <table>
@@ -27,6 +23,12 @@
 <tr><td>Celkem</td><td class="bil">{{ summary.prijmy }} mil. Kč</td><td class="bil">{{ summary.vydaje }} mil. Kč</td><td class="bil">{{ summary.bilance }} mil. Kč</td></tr>
 </tfoot>
 </table>
+
+<h3>Další informace</h3>
+
+{% if ministr.strana %}
+<p>Stranická příslušnost: {{ ministr.strana.get_link }}<sup class="note"><a href="/info/#strany">pozn.</a></sup></p>
+{% endif %}
 
 {% if ministr.wikipedia %}
 <p>Podívejte se také na Wikipedii na článek <a href="{{ ministr.wikipedia }}">{{ ministr.jmeno }}</a>.</p>
