@@ -133,4 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'dluhy',
 )
+
+EMAIL_SUBJECT_PREFIX = '[kolikdluzi.cz] '
+
 ALLOWED_HOSTS = ['kolikdluzi.cz']
