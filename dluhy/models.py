@@ -44,7 +44,7 @@ class Rozpocet(models.Model):
     rok = models.IntegerField(primary_key = True, db_index = True)
     prijmy = models.IntegerField()
     vydaje = models.IntegerField()
-    bilance = models.IntegerField()
+    bilance = models.IntegerField(blank=True)
 
     def __unicode__(self):
         return '%d (%d)' % (self.rok, self.bilance)
