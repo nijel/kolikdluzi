@@ -133,3 +133,4 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'dluhy',
 )
+ALLOWED_HOSTS = ['kolikdluzi.cz']
