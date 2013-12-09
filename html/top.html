@@ -2,18 +2,25 @@
 
 
 
-{% block title %}Největší dlužníci{% endblock %}
+{% block title %}Bilance politiků{% endblock %}
 
 {% block content %}
 
-<h2>Největší dlužníci</h2>
+<h2>Bilance politiků</h2>
+
+<p>
+Podívejte se, na kolika rozpočtech se podíleli jednotliví ministři a 
+jakou mají celkovou bilanci (viz vysvětlení 
+<a href="/info/#vypocet">výpočtu</a>).
+</p>
+
 <table>
 <thead>
 <tr><th>Ministr</th><th>Strana</th><th>Bilance</th></tr>
 </thead>
 <tbody>
 {% for ministr in top %}
-<tr><td>{{ ministr.get_link }}</td><td>{{ ministr.strana }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
+<tr><td>{{ ministr.get_link }}</td><td>{{ ministr.strana }}</td><td class="bil">{{ ministr.bilance }} mil. Kč</td></tr>
 {% endfor %}
 </tbody>
 </table>

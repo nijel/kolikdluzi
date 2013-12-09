@@ -7,6 +7,12 @@
 
 {% block content %}
 
+<p>
+Podívejte se, na kolika rozpočtech se podíleli jednotliví ministři a 
+jakou mají celkovou bilanci (viz vysvětlení 
+<a href="/info/#vypocet">výpočtu</a>).
+</p>
+
 <h2><a href="/ministri/">Největší dlužníci</a></h2>
 <table>
 <thead>
@@ -14,10 +20,12 @@
 </thead>
 <tbody>
 {% for ministr in top %}
-<tr><td>{{ ministr.get_link }}</td><td>{{ ministr.strana }}</td><td>{{ ministr.bilance }} mil. Kč</td></tr>
+<tr><td>{{ ministr.get_link }}</td><td>{{ ministr.strana }}</td><td class="bil">{{ ministr.bilance }} mil. Kč</td></tr>
 {% endfor %}
 </tbody>
 </table>
+
+<p>Je k dispozici také <a href="/ministri/">kompletní seznam</a>.</p>
 
 <h2>Vývoj rozpočtu ČR v mil. Kč</h2>
 <div id="chart_div"></div>
