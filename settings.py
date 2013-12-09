@@ -1,7 +1,6 @@
 # Django settings for kolikdluzi project.
 # -*- coding: UTF-8 -*-
-
-from socket import gethostname
+import os.path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -13,12 +12,23 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = './dluhy.db'             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        # Use 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        # Database name or path to database file if using sqlite3.
+        'NAME': 'dluhy.db',
+        # Database user, not used with sqlite3.
+        'USER': 'dluhy',
+        # Database pasword, not used with sqlite3.
+        'PASSWORD': 'dluhy',
+        # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '127.0.0.1',
+        # Set to empty string for default. Not used with sqlite3.
+        'PORT': '',
+    }
+}
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -37,15 +47,7 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = False
 
-HOSTNAME = gethostname()
-if HOSTNAME == 'rincewind':
-    WEB_ROOT = '/home/mcihar/private/kolikdluzi/'
-elif HOSTNAME == 'raptor':
-    WEB_ROOT = '/home/nijel/work/kolikdluzi/'
-elif HOSTNAME == 'web':
-    WEB_ROOT = '/var/lib/django/kolikdluzi/'
-else:
-    WEB_ROOT = '/home/nijel/work/kolikdluzi/'
+WEB_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -68,9 +70,8 @@ SECRET_KEY = '-!cv67a5jyyw%8v2s0vw+8-oo%k^-fbfi=v@d=^y@f8k!^(gz_'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,7 +80,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'kolikdluzi.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

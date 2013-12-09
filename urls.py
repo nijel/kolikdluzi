@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, include, url
 from django.contrib.sitemaps import GenericSitemap, Sitemap
 
 from dluhy.models import Ministr
