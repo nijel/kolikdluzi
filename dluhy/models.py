@@ -32,7 +32,7 @@ class Ministr(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-         return ('dluhy.views.ministr', (), {'slug': self.slug})
+        return ('dluhy.views.ministr', (), {'slug': self.slug})
 
     def get_link(self):
         return mark_safe('<a href="%s">%s</a>' % (self.get_absolute_url(), self.__unicode__()))
