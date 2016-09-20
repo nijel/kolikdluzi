@@ -11,9 +11,7 @@ sys.path = ['../'] + sys.path
 import urllib
 import webbrowser
 
-from django.template.defaultfilters import slugify
-
-from dluhy.models import Vlada, Rozpocet, Ministr, Strana
+from dluhy.models import Ministr, Strana
 
 for m in Ministr.objects.filter(wikipedia = ''): #all():
     print m.jmeno
@@ -31,7 +29,7 @@ for m in Ministr.objects.filter(wikipedia = ''): #all():
         if s != '':
             m.url = s
     if m.strana is None:
-        s = raw_input('Strana (%s): ' % ' '.join(['%d: %s' % (s.id, s.jmeno.encode('utf-8')) for s in Strana.objects.all()]))
+        s = raw_input('Strana (%s): ' % ' '.join(['%d: %s' % (strana.id, strana.jmeno.encode('utf-8')) for strana in Strana.objects.all()]))
         if s != '':
             m.strana = Strana.objects.get(pk = int(s))
     m.save()
