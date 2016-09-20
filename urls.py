@@ -1,7 +1,10 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
+import django.views.static
 from django.contrib.sitemaps import GenericSitemap, Sitemap
+import django.contrib.sitemaps.views
 
 from dluhy.models import Ministr
+import dluhy.views
 
 from django.conf import settings
 
@@ -9,6 +12,9 @@ import os
 import datetime
 
 from django.contrib import admin
+
+
+
 admin.autodiscover()
 
 ministr_dict = {
@@ -40,28 +46,28 @@ sitemaps = {
     'pages': PagesSitemap(),
 }
 
-urlpatterns = patterns('',
-    (r'^$', 'dluhy.views.index'),
-    (r'^ministri/$', 'dluhy.views.ministri'),
-    (r'^info/$', 'dluhy.views.info'),
-    (r'^chart.js$', 'dluhy.views.chart'),
-    (r'^ministri/(?P<slug>[^/]+)/$', 'dluhy.views.ministr'),
+urlpatterns = [
+    url(r'^$', dluhy.views.index),
+    url(r'^ministri/$', dluhy.views.ministri),
+    url(r'^info/$', dluhy.views.info),
+    url(r'^chart.js$', dluhy.views.chart),
+    url(r'^ministri/(?P<slug>[^/]+)/$', dluhy.views.ministr),
 
     # Sitemap
-    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.index', {'sitemaps': sitemaps}),
-    (r'^sitemap-(?P<section>.+)\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+    url(r'^sitemap.xml$', django.contrib.sitemaps.views.index, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', django.contrib.sitemaps.views.sitemap, {'sitemaps': sitemaps}),
 
     # Example:
     # (r'^kolikdluzi/', include('kolikdluzi.foo.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
     # Static media for development
-    (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+    url(r'^media/(?P<path>.*)$', django.views.static.serve,
         {'document_root': './media'}),
-)
+]
