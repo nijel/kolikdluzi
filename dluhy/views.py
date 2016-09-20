@@ -1,10 +1,9 @@
 # Create your views here.
 # -*- coding: UTF-8 -*-
-from models import Ministr, Rozpocet, Vlada, Strana
+from models import Ministr, Rozpocet, Strana
 
-from django.db.models import Sum, Count, Max, Avg, Min
+from django.db.models import Sum
 from django.shortcuts import render_to_response, get_object_or_404
-from django.core.cache import cache
 from django.template import RequestContext
 
 def index(request):
