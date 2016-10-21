@@ -55,7 +55,7 @@ urlpatterns = [
 
     # Sitemap
     url(r'^sitemap.xml$', django.contrib.sitemaps.views.index, {'sitemaps': sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', django.contrib.sitemaps.views.sitemap, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', django.contrib.sitemaps.views.sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     # Example:
     # (r'^kolikdluzi/', include('kolikdluzi.foo.urls')),
