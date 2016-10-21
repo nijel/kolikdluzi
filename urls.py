@@ -48,10 +48,10 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^$', dluhy.views.index),
-    url(r'^ministri/$', dluhy.views.ministri),
-    url(r'^info/$', dluhy.views.info),
+    url(r'^ministri/$', dluhy.views.ministri, name='ministri'),
+    url(r'^info/$', dluhy.views.info, name='info'),
     url(r'^chart.js$', dluhy.views.chart),
-    url(r'^ministri/(?P<slug>[^/]+)/$', dluhy.views.ministr),
+    url(r'^ministri/(?P<slug>[^/]+)/$', dluhy.views.ministr, name='ministr'),
 
     # Sitemap
     url(r'^sitemap.xml$', django.contrib.sitemaps.views.index, {'sitemaps': sitemaps}),
