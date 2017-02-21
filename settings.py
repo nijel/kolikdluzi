@@ -53,9 +53,9 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '{0!s}/media/'.format(WEB_ROOT)
+MEDIA_ROOT = '{0}/media/'.format(WEB_ROOT)
 
-HTML_ROOT= '{0!s}/html/'.format(WEB_ROOT)
+HTML_ROOT= '{0}/html/'.format(WEB_ROOT)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

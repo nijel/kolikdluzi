@@ -18,7 +18,7 @@ class Strana(models.Model):
         if url is None and url != '':
             return self.__unicode__()
         else:
-            return mark_safe('<a href="{0!s}">{1!s}</a>'.format(url, self.__unicode__()))
+            return mark_safe('<a href="{0}">{1}</a>'.format(url, self.__unicode__()))
 
     def __unicode__(self):
         return self.jmeno
@@ -35,7 +35,7 @@ class Ministr(models.Model):
         return ('ministr', (), {'slug': self.slug})
 
     def get_link(self):
-        return mark_safe('<a href="{0!s}">{1!s}</a>'.format(self.get_absolute_url(), self.__unicode__()))
+        return mark_safe('<a href="{0}">{1}</a>'.format(self.get_absolute_url(), self.__unicode__()))
 
     def __unicode__(self):
         return self.jmeno
@@ -58,7 +58,7 @@ class Vlada(models.Model):
     rozpocet = models.ForeignKey(Rozpocet)
 
     def __unicode__(self):
-        return '{0!s} ({1:d})'.format(self.ministr.jmeno, self.rozpocet.rok)
+        return '{0} ({1:d})'.format(self.ministr.jmeno, self.rozpocet.rok)
 
     class Meta:
         unique_together = (('ministr', 'rozpocet'),)

@@ -17,7 +17,7 @@ for m in Ministr.objects.filter(wikipedia = ''): #all():
     print m.jmeno
     webbrowser.open(m.wikipedia)
     if m.wikipedia is None or m.wikipedia == '':
-        u = 'http://cs.wikipedia.org/wiki/{0!s}'.format((urllib.quote(m.jmeno.replace(' ', '_').encode('utf-8'))))
+        u = 'http://cs.wikipedia.org/wiki/{0}'.format((urllib.quote(m.jmeno.replace(' ', '_').encode('utf-8'))))
         webbrowser.open(u)
         s = raw_input('Wikipedia: ')
         if s == '':
@@ -29,7 +29,7 @@ for m in Ministr.objects.filter(wikipedia = ''): #all():
         if s != '':
             m.url = s
     if m.strana is None:
-        s = raw_input('Strana ({0!s}): '.format(' '.join(['{0:d}: {1!s}'.format(strana.id, strana.jmeno.encode('utf-8')) for strana in Strana.objects.all()])))
+        s = raw_input('Strana ({0}): '.format(' '.join(['{0:d}: {1}'.format(strana.id, strana.jmeno.encode('utf-8')) for strana in Strana.objects.all()])))
         if s != '':
             m.strana = Strana.objects.get(pk = int(s))
     m.save()
