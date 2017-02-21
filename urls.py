@@ -25,9 +25,9 @@ class PagesSitemap(Sitemap):
     changefreq = 'weekly'
     def items(self):
         return [
-            ('/', '%s/index.html' % settings.HTML_ROOT, 1),
-            ('/ministri/', '%s/top.html' % settings.HTML_ROOT, 1),
-            ('/info/', '%s/info.html' % settings.HTML_ROOT, 0.5),
+            ('/', '{0!s}/index.html'.format(settings.HTML_ROOT), 1),
+            ('/ministri/', '{0!s}/top.html'.format(settings.HTML_ROOT), 1),
+            ('/info/', '{0!s}/info.html'.format(settings.HTML_ROOT), 0.5),
             ]
     def location(self, item):
         return item[0]
