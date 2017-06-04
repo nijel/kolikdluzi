@@ -6,6 +6,7 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.core.management import call_command
 
 
 class ViewTest(TestCase):
@@ -29,3 +30,6 @@ class ViewTest(TestCase):
     def test_ministr(self):
         response = self.client.get('/ministri/bohuslav-sobotka/')
         self.assertContains(response, 'Bohuslav Sobotka')
+
+    def test_import(self):
+        call_command('import_wikipedia')
