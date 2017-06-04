@@ -26,7 +26,7 @@ PARTIES = {
 }
 
 def wikilink(name):
-    return 'https://cs.wikipedia.org/wiki/' + urllib.quote(name.encode('utf-8'))
+    return 'https://cs.wikipedia.org/wiki/' + urllib.quote(name.replace(' ', '_').encode('utf-8'))
 
 
 class Command(BaseCommand):
@@ -49,6 +49,8 @@ class Command(BaseCommand):
                     else:
                         first, last = parts[1:]
                         wiki = '{0} {1}'.format(first, last)
+                    jmeno = '{0} {1}'.format(first, last)
+                    wiki = wikilink(wiki)
                 else:
                     raise Exception('Unknown name: {0}'.format(name))
 
@@ -69,6 +71,21 @@ class Command(BaseCommand):
                     }
                 )
                 if created:
-                    self.stderr.write('Vytvorena strana {0}'.format(strana))
+                    self.stdout.write('Vytvorena strana {0}'.format(strana))
 
-                continue
+                ministr, created = Ministr.objects.get_or_create(
+                    jmeno=jmeno,
+                    defaults={
+                        'slug': slugify(name),
+                        'wikipedia': wiki,
+                        'strana': strana,
+                    }
+                )
+
+                if created:
+                    self.stdout.write('Vytvoren ministr {0}'.format(ministr))
+                else:
+                    if strana != ministr.strana:
+                        self.stderr.write('Ruzna strana pro {0}: {1}, {2}'.format(ministr, ministr.strana, strana))
+                    if wiki != ministr.wikipedia:
+                        self.stderr.write('Ruzne wiki pro {0}: {1}, {2}'.format(ministr, ministr.wikipedia, wiki))
