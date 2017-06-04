@@ -3,14 +3,30 @@ from __future__ import unicode_literals
 
 import hashlib
 import os
+import urllib
 
 from django.core.management.base import BaseCommand
+from django.utils.http import urlencode
+from django.utils.text import slugify
 
 from mwclient import Site
 import mwparserfromhell
 
+from dluhy.models import Ministr, Strana, Vlada, Rozpocet
+
 
 ROWS = ('', '2', '3', '4', '5', '6', '7', '8', '9')
+
+PARTIES = {
+    # Slouceno
+    'KDS': 'ODS',
+    # Compatibility
+    'US-DEU': 'Unie svobody',
+    'SZ': 'Strana Zelených',
+}
+
+def wikilink(name):
+    return 'https://cs.wikipedia.org/wiki/' + urllib.quote(name.encode('utf-8'))
 
 
 class Command(BaseCommand):
@@ -37,7 +53,22 @@ class Command(BaseCommand):
                     raise Exception('Unknown name: {0}'.format(name))
 
                 party = template.get('strana' + row).value.strip()
-                if 'nestr' in party:
+                if 'nestr' in party or party == '–':
                     party = 'Nestraník'
                 else:
                     party = party.split(']')[0].strip(']').strip('[').split('|')[-1]
+
+                if party in PARTIES:
+                    party = PARTIES[party]
+
+                strana, created = Strana.objects.get_or_create(
+                    jmeno=party,
+                    defaults={
+                        'slug': slugify(party),
+                        'wikipedia': wikilink(party),
+                    }
+                )
+                if created:
+                    self.stderr.write('Vytvorena strana {0}'.format(strana))
+
+                continue
