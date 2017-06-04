@@ -75,6 +75,12 @@ class Command(BaseCommand):
                 if created:
                     self.stdout.write('Vytvorena strana {0}'.format(strana))
 
+                start = parsedate(template.get('datum-od' + row).value)
+                end = parsedate(template.get('datum-do' + row).value)
+
+                if start.year >= letos:
+                    continue
+
                 ministr, created = Ministr.objects.get_or_create(
                     jmeno=jmeno,
                     defaults={
@@ -95,9 +101,6 @@ class Command(BaseCommand):
                         self.stderr.write('Ruzne wiki pro {0}: {1}, {2}'.format(ministr, ministr.wikipedia, wiki))
                         ministr.wikipedia = wiki
                         ministr.save()
-
-                start = parsedate(template.get('datum-od' + row).value)
-                end = parsedate(template.get('datum-do' + row).value)
 
                 for rok in range(start.year, end.year + 1):
                     if rok >= letos:
