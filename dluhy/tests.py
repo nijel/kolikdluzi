@@ -9,11 +9,23 @@ from django.test import TestCase
 
 
 class ViewTest(TestCase):
+    fixtures = ['test.json']
+
     def test_home(self):
-        self.client.get('/')
+        response = self.client.get('/')
+        self.assertContains(response, 'Bohuslav Sobotka')
 
     def test_info(self):
         self.client.get('/info/')
 
     def test_chart(self):
-        self.client.get('/chart.js')
+        response = self.client.get('/chart.js')
+        self.assertContains(response, 'Rok')
+
+    def test_ministri(self):
+        response = self.client.get('/ministri/')
+        self.assertContains(response, 'Bohuslav Sobotka')
+
+    def test_ministr(self):
+        response = self.client.get('/ministri/bohuslav-sobotka/')
+        self.assertContains(response, 'Bohuslav Sobotka')
