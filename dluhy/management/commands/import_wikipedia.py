@@ -77,7 +77,7 @@ class Command(BaseCommand):
                 ministr, created = Ministr.objects.get_or_create(
                     jmeno=jmeno,
                     defaults={
-                        'slug': slugify(name),
+                        'slug': slugify(jmeno),
                         'wikipedia': wiki,
                         'strana': strana,
                     }
