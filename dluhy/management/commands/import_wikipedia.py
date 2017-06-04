@@ -62,18 +62,29 @@ class Command(BaseCommand):
                 party = template.get('strana' + row).value.strip()
                 if 'nestr' in party or party == '–':
                     party = 'Nestraník'
+                    wikiparty = None
                 else:
-                    party = party.split(']')[0].strip(']').strip('[').split('|')[-1]
+                    parts = party.split(']')[0].strip(']').strip('[').split('|')
+                    if len(parts) == 1:
+                        party = wikiparty = parts[0]
+                    else:
+                        wikiparty, party = parts
+                    wikiparty = wikilink(wikiparty)
 
                 strana, created = Strana.objects.get_or_create(
                     jmeno=party,
                     defaults={
                         'slug': slugify(party),
-                        'wikipedia': wikilink(party),
+                        'wikipedia': wikiparty,
                     }
                 )
                 if created:
                     self.stdout.write('Vytvorena strana {0}'.format(strana))
+                else:
+                    if strana.wikipedia != wikiparty:
+                        self.stderr.write('Ruzne wiki pro {0}: {1}, {2}'.format(strana, strana.wikipedia, wikiparty))
+                        strana.wikipedia = wikiparty
+                        strana.save()
 
                 start = parsedate(template.get('datum-od' + row).value)
                 end = parsedate(template.get('datum-do' + row).value)
