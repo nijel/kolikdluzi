@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 
 class Strana(models.Model):
     jmeno = models.CharField(max_length = 100)
-    slug = models.SlugField(unique = True)
+    slug = models.SlugField(unique=True, max_length=100)
     wikipedia = models.URLField(null = True, blank = True)
     url = models.URLField(null = True, blank = True)
 
@@ -26,7 +26,7 @@ class Strana(models.Model):
 
 class Ministr(models.Model):
     jmeno = models.CharField(max_length = 100)
-    slug = models.SlugField(unique = True)
+    slug = models.SlugField(unique=True, max_length=100)
     wikipedia = models.URLField(null = True, blank = True)
     url = models.URLField(null = True, blank = True)
     strana = models.ForeignKey(Strana, null = True, blank = True)
