@@ -3,6 +3,8 @@ from django.contrib import admin
 
 class MinistrAdmin(admin.ModelAdmin):
     list_display = ('jmeno', 'slug', 'strana')
+    list_search = ('jmeno', )
+    list_filter = ('strana', )
     prepopulated_fields = {
         'slug': ('jmeno', )
     }
