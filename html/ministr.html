@@ -27,7 +27,7 @@
 <h3>Další informace</h3>
 
 {% if ministr.strana %}
-<p>Stranická příslušnost<sup class="note"><a href="/info/#strany">pozn.</a></sup>: {{ ministr.strana.get_link }}</p>
+<p>Stranická příslušnost<sup class="note"><a href="/info/#strany">pozn.</a></sup>: {{ ministr.strana.get_link }} {% if ministr.strana.url %}(<a href="{{ ministr.strana.wikipedia }}">Wikipedia</a>){% endif %}</p>
 {% endif %}
 
 {% if ministr.wikipedia %}
