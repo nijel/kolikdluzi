@@ -18,14 +18,6 @@ from dluhy.models import Ministr, Strana, Vlada, Rozpocet
 
 ROWS = ('', '2', '3', '4', '5', '6', '7', '8', '9')
 
-PARTIES = {
-    # Slouceno
-    'KDS': 'ODS',
-    # Compatibility
-    'US-DEU': 'Unie svobody',
-    'SZ': 'Strana Zelených',
-}
-
 
 def wikilink(name):
     return 'https://cs.wikipedia.org/wiki/' + urllib.quote(name.replace(' ', '_').encode('utf-8'))
@@ -71,9 +63,6 @@ class Command(BaseCommand):
                     party = 'Nestraník'
                 else:
                     party = party.split(']')[0].strip(']').strip('[').split('|')[-1]
-
-                if party in PARTIES:
-                    party = PARTIES[party]
 
                 strana, created = Strana.objects.get_or_create(
                     jmeno=party,
