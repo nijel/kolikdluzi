@@ -21,12 +21,6 @@ def ministri(request):
 def info(request):
     return render(request, 'info.html')
 
-def strana(request, slug):
-    strana = get_object_or_404(Strana, slug = slug)
-    return render(request, 'strana.html', {
-        'strana': strana,
-    })
-
 def ministr(request, slug):
     ministr = get_object_or_404(Ministr, slug = slug)
     summary = ministr.vlada_set.aggregate(
