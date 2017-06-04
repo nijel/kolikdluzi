@@ -1,4 +1,4 @@
-from models import Ministr, Rozpocet, Vlada, Strana
+from dluhy.models import Ministr, Rozpocet, Vlada, Strana
 from django.contrib import admin
 
 class MinistrAdmin(admin.ModelAdmin):
