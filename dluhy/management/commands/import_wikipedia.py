@@ -104,3 +104,16 @@ class Command(BaseCommand):
 
                 start = parsedate(template.get('datum-od' + row).value)
                 end = parsedate(template.get('datum-do' + row).value)
+
+                for rok in range(start.year, end.year + 1):
+                    rozpocet, created = Rozpocet.objects.get_or_create(
+                        rok=rok,
+                        defaults={'prijmy': 0, 'vydaje': 0}
+                    )
+                    if created:
+                        self.stdout.write('Vytvoren rozpocet {0}'.format(rozpocet))
+                    vlada, created = Vlada.objects.get_or_create(
+                        rozpocet=rozpocet, ministr=ministr
+                    )
+                    if created:
+                        self.stdout.write('Vytvoreno vladnuti {0}'.format(vlada))
