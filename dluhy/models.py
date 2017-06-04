@@ -8,6 +8,9 @@ class Strana(models.Model):
     wikipedia = models.URLField(null = True, blank = True)
     url = models.URLField(null = True, blank = True)
 
+    class Meta:
+        ordering = ('jmeno', )
+
     def get_absolute_url(self):
         if self.url is not None and self.url != '':
             return self.url
@@ -31,6 +34,9 @@ class Ministr(models.Model):
     url = models.URLField(null = True, blank = True)
     strana = models.ForeignKey(Strana, null = True, blank = True)
 
+    class Meta:
+        ordering = ('jmeno', )
+
     @models.permalink
     def get_absolute_url(self):
         return ('ministr', (), {'slug': self.slug})
@@ -46,6 +52,9 @@ class Rozpocet(models.Model):
     prijmy = models.IntegerField()
     vydaje = models.IntegerField()
     bilance = models.IntegerField(blank=True)
+
+    class Meta:
+        ordering = ('rok', )
 
     def __unicode__(self):
         return '{0:d} ({1:d})'.format(self.rok, self.bilance)
