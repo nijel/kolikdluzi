@@ -14,7 +14,7 @@
  {"pk": 5, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Anton%C3%ADn_Baudy%C5%A1", "strana": 4, "jmeno": "Anton\u00edn Baudy\u0161", "slug": "antonin-baudys"}},
  {"pk": 6, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Stanislav_B%C4%9Blehr%C3%A1dek", "strana": 4, "jmeno": "Stanislav B\u011blehr\u00e1dek", "slug": "stanislav-belehradek"}},
  {"pk": 7, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Franti%C5%A1ek_Benda_(ministr)", "strana": 2, "jmeno": "Franti\u0161ek Benda", "slug": "frantisek-benda"}},
- {"pk": 8, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Vladim%C3%ADr_Bud%C3%ADnsk%C3%BD", "strana": 2, "jmeno": "Vladim\u00edr Bud\u00ednsk\u00fd", "slug": "vladimir-budinsky"}},
+ {"pk": 8, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Vladim%C3%ADr_Bud%C3%ADnsk%C3%BD", "strana": 2, "jmeno": "Vladim\u00edr Budinsk\u00fd", "slug": "vladimir-budinsky"}},
  {"pk": 9, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Vladim%C3%ADr_Dlouh%C3%BD_(politik)", "strana": 8, "jmeno": "Vladim\u00edr Dlouh\u00fd", "slug": "vladimir-dlouhy"}},
  {"pk": 10, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Karel_Dyba", "strana": 8, "jmeno": "Karel Dyba", "slug": "karel-dyba"}},
  {"pk": 11, "model": "dluhy.ministr", "fields": {"url": null, "wikipedia": "http://cs.wikipedia.org/wiki/Vil%C3%A9m_Hol%C3%A1%C5%88", "strana": 4, "jmeno": "Vil\u00e9m Hol\u00e1\u0148", "slug": "vilem-holan"}},
