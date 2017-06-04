@@ -103,7 +103,7 @@ class Command(BaseCommand):
                         ministr.save()
 
                 for rok in range(start.year, end.year + 1):
-                    if rok >= letos:
+                    if rok < 2013 or rok >= letos:
                         continue
                     rozpocet, created = Rozpocet.objects.get_or_create(
                         rok=rok,
