@@ -4,7 +4,11 @@ from __future__ import unicode_literals
 import datetime
 import hashlib
 import os
-import urllib
+
+try:
+    from urllib import quote
+except ImportError:
+    from urllib.parse import quote
 
 from django.core.management.base import BaseCommand
 from django.utils.http import urlencode
@@ -20,7 +24,7 @@ ROWS = ('', '2', '3', '4', '5', '6', '7', '8', '9')
 
 
 def wikilink(name):
-    return 'https://cs.wikipedia.org/wiki/' + urllib.quote(name.replace(' ', '_').encode('utf-8'))
+    return 'https://cs.wikipedia.org/wiki/' + quote(name.replace(' ', '_').encode('utf-8'))
 
 
 def parsedate(value):
