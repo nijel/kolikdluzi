@@ -1,6 +1,6 @@
 # Create your views here.
 # -*- coding: UTF-8 -*-
-from models import Ministr, Rozpocet, Strana
+from dluhy.models import Ministr, Rozpocet, Strana
 
 from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404
