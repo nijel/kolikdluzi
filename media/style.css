@@ -19,7 +19,7 @@
 }
 
 #body {
-	margin: 2em 20em 1em 1em;
+	margin: 2em 2em 1em 1em;
 	padding: 0px;
 }
 
@@ -46,22 +46,6 @@ body {
 	background: #fff;
 	font-family: sans-serif;
 	color: black;
-}
-
-div.sidebar {
-	position: absolute;
-	top: 4em;
-	right: 0px;
-	width: 20em;
-
-	margin-left: 0px;
-	margin-right: 0px;
-	padding-right: 0px;
-
-	padding-top: 20px;
-	padding-left: 0px;
-
-	font-size: smaller;
 }
 
 ul#footer {
@@ -114,7 +98,3 @@ table td, table th {
 table tfoot td {
     border-top: 1px solid black;
 }
-div.sidebar ul {
-    margin: 0;
-}
-
