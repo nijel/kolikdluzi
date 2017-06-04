@@ -95,6 +95,8 @@ class Command(BaseCommand):
                 end = parsedate(template.get('datum-do' + row).value)
 
                 for rok in range(start.year, end.year + 1):
+                    if rok >= 2017:
+                        continue
                     rozpocet, created = Rozpocet.objects.get_or_create(
                         rok=rok,
                         defaults={'prijmy': 0, 'vydaje': 0}
