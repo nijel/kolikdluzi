@@ -37,6 +37,7 @@ class Command(BaseCommand):
     help = 'stahne informace o vladach z Wikipedie'
 
     def handle(self, *args, **options):
+        letos = datetime.date.today().year
         site = Site('cs.wikipedia.org')
 
         page = site.pages['Seznam_ministrů_České_republiky']
@@ -88,14 +89,18 @@ class Command(BaseCommand):
                 else:
                     if strana != ministr.strana:
                         self.stderr.write('Ruzna strana pro {0}: {1}, {2}'.format(ministr, ministr.strana, strana))
+                        ministr.strana = strana
+                        ministr.save()
                     if wiki != ministr.wikipedia:
                         self.stderr.write('Ruzne wiki pro {0}: {1}, {2}'.format(ministr, ministr.wikipedia, wiki))
+                        ministr.wikipedia = wiki
+                        ministr.save()
 
                 start = parsedate(template.get('datum-od' + row).value)
                 end = parsedate(template.get('datum-do' + row).value)
 
                 for rok in range(start.year, end.year + 1):
-                    if rok >= 2017:
+                    if rok >= letos:
                         continue
                     rozpocet, created = Rozpocet.objects.get_or_create(
                         rok=rok,
