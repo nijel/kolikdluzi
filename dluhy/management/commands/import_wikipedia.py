@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from __future__ import unicode_literals
 
+import datetime
 import hashlib
 import os
 import urllib
@@ -25,8 +26,19 @@ PARTIES = {
     'SZ': 'Strana Zelených',
 }
 
+
 def wikilink(name):
     return 'https://cs.wikipedia.org/wiki/' + urllib.quote(name.replace(' ', '_').encode('utf-8'))
+
+
+def parsedate(value):
+    parts = value.strip().split('}')[0].strip('{').split('|')
+    if parts[0] == 'úřadující':
+        return datetime.date.today()
+    elif parts[0] == 'dts':
+        date = [int(x) for x in parts[1:]]
+        return datetime.date(date[2], date[1], date[0])
+    raise ValueError('Invalid date: {0}'.format(value))
 
 
 class Command(BaseCommand):
@@ -89,3 +101,6 @@ class Command(BaseCommand):
                         self.stderr.write('Ruzna strana pro {0}: {1}, {2}'.format(ministr, ministr.strana, strana))
                     if wiki != ministr.wikipedia:
                         self.stderr.write('Ruzne wiki pro {0}: {1}, {2}'.format(ministr, ministr.wikipedia, wiki))
+
+                start = parsedate(template.get('datum-od' + row).value)
+                end = parsedate(template.get('datum-do' + row).value)
